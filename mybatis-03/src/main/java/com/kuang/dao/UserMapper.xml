@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+                <!DOCTYPE mapper
+                        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+                        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+                <!--namespace=绑定对应的Dao/Mapper接口-->
+        <mapper namespace="com.kuang.dao.UserMapper">
+       <!-- select查询语句-->
+    <select id="getUserById1" resultType="com.kuang.poro.User" parameterType="int">
+        select id,name,pwd as password from mybatis.user where id=#{id}
+    </select>
+    <select id="getUserById" resultType="User" parameterType="int">
+        select * from mybatis.user where id=#{id}
+    </select>
+<!--结果集映射   -->
+    <resultMap id="UserMap" type="com.kuang.poro.User">
+        <result property="password" column="pwd"></result>
+        <result column="name" property="name"></result>
+    </resultMap>
+    <select id="getUserById2" resultMap="UserMap" parameterType="int">
+        select * from mybatis.user where id=#{id}
+    </select>
+        </mapper>
+      <!--  这个配置文件可以写在任意位置-->
+

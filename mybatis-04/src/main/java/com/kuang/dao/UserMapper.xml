@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+                <!DOCTYPE mapper
+                        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+                        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+                <!--namespace=绑定对应的Dao/Mapper接口-->
+        <mapper namespace="com.kuang.dao.UserMapper">
+       <!-- select查询语句-->
+            <select id="getUserList" resultType="user"> /* 在配置文件中返回结果类型要写它的权限命名,配置文件不像java类，可以去找它的关联,从而导入包*/
+                select * from mybatis.user
+            </select>
+    <resultMap id="userMap" type="User">
+        <result property="pwd" column="pwd"></result>
+    </resultMap>
+     <select id="getUserByLimit" parameterType="map" resultMap="userMap">
+         select *from mybatis.user limit #{startIndex},#{pageSize}
+     </select>
+<select id="getUserRowBounds" resultMap="userMap">
+    select *from mybatis.user
+</select>
+        </mapper>
+      <!--  这个配置文件可以写在任意位置-->
+

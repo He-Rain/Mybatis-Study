@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!--configuration核心配置文件-->
+<configuration>
+    <environments default="development">
+        <environment id="development">
+            <!--       事务管理     -->   <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.jdbc.Driver"/>
+<!--jdbc:mysql 是协议，一个是主协议（jdbc）一个是子协议（mysql） -->
+                <property name="url" value="jdbc:mysql://localhost:3306/mybatis?useSSL=true&amp;characterEncoding=utf-8&amp;useUnicode=true"/>
+                <property name="username" value="root"/>
+                <property name="password" value="hhnwdzsv"/>
+            </dataSource>
+        </environment>
+       <!--<environment id="test">
+           <transactionManager type="JDBC"/>
+           <dataSource type="POOLED">
+               <property name="driver" value="${driver}"/>
+               <property name="url" value="${url}"/>
+               <property name="username" value="${username}"/>
+               <property name="password" value="${password}"/>
+           </dataSource>
+       </environment>-->
+        
+    </environments>
+<!--    <mappers>-->
+<!--        <mapper resource="org/mybatis/example/BlogMapper.xml"/>-->
+<!--    </mappers>-->
+<!--每一个Maaper.xml都需要在Mybatis核心配置文件中注册    -->
+    <mappers>
+        <mapper resource="com/kuang/dao/UserMapper.xml"/>
+    </mappers>
+</configuration>
